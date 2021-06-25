@@ -104,16 +104,12 @@ public class DBController extends SQLiteOpenHelper {
               Note note = new Note(
                       Integer.parseInt(cursor.getString(0))  ,
                       cursor.getString(1),
-                      cursor.getString(3),
-                      cursor.getString(4)
+                      cursor.getString(2),
+                      cursor.getString(3)
               );
-//              note.setNoteTitle(cursor.getString(1));
-//              note.setNoteContent(cursor.getString(2));
-//              note.setNoteContent(cursor.getString(3));
-//              note.setNoteAddDate(cursor.getString(4));
 
               noteList.add(note);
-          }while (cursor.moveToFirst());
+          }while (cursor.moveToNext());
       }
 
       return noteList;
