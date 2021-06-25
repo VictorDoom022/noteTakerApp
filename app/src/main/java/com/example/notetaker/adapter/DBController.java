@@ -47,4 +47,16 @@ public class DBController extends SQLiteOpenHelper {
         // Create tables again
         onCreate(sqLiteDatabase);
     }
+
+    void addNote(Note note){
+      SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(KEY_TITLE, note.getNoteTitle());
+        contentValues.put(KEY_CONTENT, note.getNoteContent());
+        contentValues.put(KEY_ADDDATE, note.getNoteAddDate());
+
+        sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+        sqLiteDatabase.close();
+    }
 }
