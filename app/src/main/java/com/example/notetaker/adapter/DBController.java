@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.notetaker.model.Note;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class DBController extends SQLiteOpenHelper {
   private static final int DATABASE_VERSION = 1;
-  private static final String DATABASE_NAME = "testOne";
+  private static final String DATABASE_NAME = "testFive";
   private static final String TABLE_NAME = "note";
 
   private static final String KEY_ID = "id";
@@ -30,10 +31,10 @@ public class DBController extends SQLiteOpenHelper {
     String CREATE_NOTE_TABLE =
         "CREATE TABLE " + TABLE_NAME +
         "(" +
-            KEY_ID + "INTEGER PRIMARY KEY," +
-            KEY_TITLE + "TEXT," +
-            KEY_CONTENT + "TEXT," +
-            KEY_ADDDATE + "TEXT" +
+            KEY_ID + " INTEGER PRIMARY KEY," +
+            KEY_TITLE + " TEXT," +
+            KEY_CONTENT + " TEXT," +
+            KEY_ADDDATE + " TEXT" +
         ")";
 
     sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
@@ -48,7 +49,7 @@ public class DBController extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    void addNote(Note note){
+    public void addNote(Note note){
       SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
