@@ -118,4 +118,18 @@ public class DBController extends SQLiteOpenHelper {
       return noteList;
     }
 
+    public int updateNote(Note note){
+      SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+      ContentValues contentValues = new ContentValues();
+      contentValues.put(KEY_TITLE, note.getNoteTitle());
+      contentValues.put(KEY_CONTENT, note.getNoteContent());
+      contentValues.put(KEY_ADDDATE, note.getNoteAddDate());
+
+      return sqLiteDatabase.update(
+        TABLE_NAME, contentValues,
+        KEY_ID + "=?",
+        new String[] {String.valueOf(note.getNoteID())}
+      );
+    }
 }
