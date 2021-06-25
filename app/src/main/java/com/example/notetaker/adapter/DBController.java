@@ -132,4 +132,14 @@ public class DBController extends SQLiteOpenHelper {
         new String[] {String.valueOf(note.getNoteID())}
       );
     }
+
+    public void deleteNote(Note note){
+      SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+      sqLiteDatabase.delete(
+        TABLE_NAME,
+        KEY_ID + "=?",
+        new String[]{String.valueOf(note.getNoteID())}
+      );
+      sqLiteDatabase.close();
+    }
 }
