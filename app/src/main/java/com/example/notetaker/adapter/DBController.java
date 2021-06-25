@@ -89,4 +89,33 @@ public class DBController extends SQLiteOpenHelper {
 
         return note;
     }
+
+    public List<Note> getAllNote(){
+      List<Note> noteList = new ArrayList<Note>();
+
+      String query = "SELECT * FROM " + TABLE_NAME;
+
+      SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+      Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+      if (cursor.moveToFirst()){
+          do {
+              Note note = new Note(
+                      Integer.parseInt(cursor.getString(0))  ,
+                      cursor.getString(1),
+                      cursor.getString(3),
+                      cursor.getString(4)
+              );
+//              note.setNoteTitle(cursor.getString(1));
+//              note.setNoteContent(cursor.getString(2));
+//              note.setNoteContent(cursor.getString(3));
+//              note.setNoteAddDate(cursor.getString(4));
+
+              noteList.add(note);
+          }while (cursor.moveToFirst());
+      }
+
+      return noteList;
+    }
+
 }
