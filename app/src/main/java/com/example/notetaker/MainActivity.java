@@ -2,6 +2,7 @@ package com.example.notetaker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -23,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(MainActivity.this, "Button touched", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Button touched", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), AddNoteActivity.class);
+                        startActivity(intent);
                     }
                 }
         );
