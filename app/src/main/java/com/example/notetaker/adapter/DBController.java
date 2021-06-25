@@ -142,4 +142,13 @@ public class DBController extends SQLiteOpenHelper {
       );
       sqLiteDatabase.close();
     }
+
+    public int getAllNoteCount(){
+      String query = "SELECT * FROM " + TABLE_NAME;
+      SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+      Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+      cursor.close();
+
+      return cursor.getCount();
+    }
 }
