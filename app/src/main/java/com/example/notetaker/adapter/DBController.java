@@ -59,4 +59,34 @@ public class DBController extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         sqLiteDatabase.close();
     }
+
+    Note getNoteByID(int id){
+      SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        Cursor cursor = sqLiteDatabase.query(
+            TABLE_NAME,
+            new String[]{
+                KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_ADDDATE
+            },
+            KEY_ID + "=?",
+            new String[] {String.valueOf(id)},
+            null,
+            null,
+            null,
+            null
+        );
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Note note = new Note(
+            Integer.parseInt(cursor.getString(0)),
+            cursor.getString(1),
+            cursor.getString(2),
+            cursor.getString(3)
+        );
+
+        return note;
+    }
 }
