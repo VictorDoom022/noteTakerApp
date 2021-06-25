@@ -6,6 +6,14 @@ public class Note {
     private String noteContent;
     private String noteAddDate;
 
+    public Note() { };
+
+    public Note(String noteTitle, String noteContent, String noteAddDate) {
+        this.noteTitle = noteTitle;
+        this.noteContent = noteContent;
+        this.noteAddDate = noteAddDate;
+    }
+
     public Note(int noteID, String noteTitle, String noteContent, String noteAddDate) {
         this.noteID = noteID;
         this.noteTitle = noteTitle;
