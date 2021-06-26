@@ -12,6 +12,9 @@ import android.widget.Toast;
 import com.example.notetaker.adapter.DBController;
 import com.example.notetaker.model.Note;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class AddNoteActivity extends AppCompatActivity {
 
     Button addNoteButton;
@@ -27,7 +30,9 @@ public class AddNoteActivity extends AppCompatActivity {
         addNoteButton = findViewById(R.id.addNoteButton);
         titleEditText = findViewById(R.id.titleEditText);
         contentEditText = findViewById(R.id.contentEditText);
-        String date = "TempDate";
+
+        Date date = Calendar.getInstance().getTime();
+        String dateInString = date.toString();
 
         addNoteButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -35,7 +40,7 @@ public class AddNoteActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Toast.makeText(AddNoteActivity.this, "Note Added", Toast.LENGTH_SHORT).show();
                         dbController.addNote(
-                                new Note(titleEditText.getText().toString(), contentEditText.getText().toString(), date)
+                                new Note(titleEditText.getText().toString(), contentEditText.getText().toString(), dateInString)
                         );
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
