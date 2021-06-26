@@ -22,7 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleText"
         android:hint="Note title"
+        android:height="40dp"
         android:background="@null"
+        android:lines="1"
         android:layout_marginHorizontal="5dp"/>
 
     <TextView
