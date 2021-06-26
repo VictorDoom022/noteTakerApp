@@ -24,30 +24,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     RecyclerView noteListRecyclerView;
     FloatingActionButton addNoteFloatingActionButton;
 
-    String[] sortItemChoice = {"Title Asc", "Title Desc"};
+    List<Note> noteList;
+    String[] sortItemChoice = {"Default", "Title Asc", "Title Desc"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DBController dbController = new DBController(getApplicationContext());
-
         addNoteFloatingActionButton = findViewById(R.id.addNoteFloatingButton);
-        noteListRecyclerView = findViewById(R.id.noteListRecyclerView);
         spinnerSortTitle = findViewById(R.id.sortTitleSpinner);
 
         spinnerSortTitle.setOnItemSelectedListener(this);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, sortItemChoice);
         arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerSortTitle.setAdapter(arrayAdapter);
-
-        noteListRecyclerView.setHasFixedSize(true);
-        noteListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        List<Note> noteList = dbController.getAllNote();
-        NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, noteList);
-        noteListRecyclerView.setAdapter(adapter);
 
         addNoteFloatingActionButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -62,9 +53,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+        DBController dbController = new DBController(getApplicationContext());
+
+        noteListRecyclerView = findViewById(R.id.noteListRecyclerView);
+        noteListRecyclerView.setHasFixedSize(true);
+        noteListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         String selectedItem = adapterView.getItemAtPosition(i).toString();
 
-        Toast.makeText(getApplicationContext(), selectedItem, Toast.LENGTH_SHORT).show();
+        if(selectedItem == sortItemChoice[0]){
+            noteList = dbController.getAllNote();
+        }else if(selectedItem == sortItemChoice[1]){
+            noteList = dbController.getNoteByType(1);
+        }else if(selectedItem == sortItemChoice[2]){
+            noteList = dbController.getNoteByType(2);
+        }
+
+        NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, noteList);
+        noteListRecyclerView.setAdapter(adapter);
     }
 
     @Override

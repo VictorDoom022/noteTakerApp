@@ -114,6 +114,34 @@ public class DBController extends SQLiteOpenHelper {
       return noteList;
     }
 
+  public List<Note> getNoteByType(int type){
+    List<Note> noteList = new ArrayList<Note>();
+
+    // Type 1 = ASC
+    // Type 2 = DESC
+    String querySortString = type == 1 ? " ASC " : " DESC ";
+
+    String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + KEY_TITLE + querySortString;
+
+    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+    if (cursor.moveToFirst()){
+      do {
+        Note note = new Note(
+                Integer.parseInt(cursor.getString(0))  ,
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3)
+        );
+
+        noteList.add(note);
+      }while (cursor.moveToNext());
+    }
+
+    return noteList;
+  }
+
     public int updateNote(Note note){
       SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
