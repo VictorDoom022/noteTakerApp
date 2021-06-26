@@ -29,7 +29,6 @@ public class AddNoteActivity extends AppCompatActivity {
         contentEditText = findViewById(R.id.contentEditText);
         String date = "TempDate";
 
-
         addNoteButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
