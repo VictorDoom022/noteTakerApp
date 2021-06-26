@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditNoteActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/editNoteTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Title :"
+        android:textSize="40sp"
+        android:layout_marginHorizontal="5dp"/>
+
+    <EditText
+        android:id="@+id/editNoteTitleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editNoteTitleText"
+        android:hint="Note title"
+        android:background="@null"
+        android:layout_marginHorizontal="5dp"/>
+
+    <TextView
+        android:id="@+id/editNoteContentText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editNoteTitleEditText"
+        android:text="Note Content"
+        android:textSize="40sp"
+        android:layout_marginHorizontal="5dp"/>
+
+    <EditText
+        android:id="@+id/editNoteContentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editNoteContentText"
+        android:hint="Type your note content here!"
+        android:gravity="top"
+        android:background="@null"
+        android:layout_marginHorizontal="5dp"/>
+
+    <Button
+        android:id="@+id/editNoteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:text="Edit note"
+        android:layout_marginHorizontal="5dp"/>
+</RelativeLayout>

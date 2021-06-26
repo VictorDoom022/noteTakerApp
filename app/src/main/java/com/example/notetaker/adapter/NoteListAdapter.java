@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.notetaker.EditNoteActivity;
 import com.example.notetaker.MainActivity;
 import com.example.notetaker.R;
 import com.example.notetaker.model.Note;
@@ -59,7 +61,9 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // to-do navigate to edit page
+                Intent intent = new Intent(context, EditNoteActivity.class);
+                intent.putExtra("NOTE_ID", note.getNoteID());
+                context.startActivity(intent);
             }
         });
     }

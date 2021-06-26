@@ -61,7 +61,7 @@ public class DBController extends SQLiteOpenHelper {
         sqLiteDatabase.close();
     }
 
-    Note getNoteByID(int id){
+    public Note getNoteByID(int id){
       SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
         Cursor cursor = sqLiteDatabase.query(
