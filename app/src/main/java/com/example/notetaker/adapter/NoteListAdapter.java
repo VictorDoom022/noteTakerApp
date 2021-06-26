@@ -1,5 +1,6 @@
 package com.example.notetaker.adapter;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -87,6 +88,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
                     public void onClick(DialogInterface dialog, int id) {
                         DBController dbController = new DBController(context);
                         dbController.deleteNote(note);
+                        ((Activity)context).recreate();
                     }
                 });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
