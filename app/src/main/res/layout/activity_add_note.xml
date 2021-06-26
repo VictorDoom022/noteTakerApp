@@ -42,6 +42,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/contentText"
         android:hint="Type your note content here!"
+        android:inputType="textMultiLine"
         android:gravity="top"
         android:background="@null"
         android:layout_marginHorizontal="5dp"/>
