@@ -18,6 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@color/purple_500"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
