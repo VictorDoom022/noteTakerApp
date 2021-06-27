@@ -8,11 +8,15 @@
     tools:context=".EditNoteActivity"
     android:orientation="vertical">
 
+    <include
+        layout="@layout/app_bar"
+        android:id="@+id/appBar"/>
+
     <TextView
         android:id="@+id/editNoteTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/appBar"
         android:text="Title :"
         android:textSize="40sp"
         android:layout_marginHorizontal="5dp"/>
