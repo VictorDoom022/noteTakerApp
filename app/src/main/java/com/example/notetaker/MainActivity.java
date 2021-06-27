@@ -100,7 +100,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id = item.getItemId();
 
         if (id == R.id.aboutAppItemButton){
-            // to do about app page
+            Intent intent = new Intent(getApplicationContext(), AboutAppActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

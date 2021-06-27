@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutAppActivity">
+
+    <include
+        layout="@layout/app_bar"
+        android:id="@+id/appBar"/>
+
+    <TextView
+        android:id="@+id/appTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_name"
+        android:textSize="50dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/versionNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appTitleText"
+        android:layout_centerHorizontal="true"
+        android:text="v0.0"
+        android:textSize="15dp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/byText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/versionNumberText"
+        android:layout_centerHorizontal="true"
+        android:text="by"
+        android:textSize="20dp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/vicNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/byText"
+        android:layout_centerHorizontal="true"
+        android:text="@string/vic_name"
+        android:textSize="35dp"/>
+
+    <TextView
+        android:id="@+id/andText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vicNameText"
+        android:layout_centerHorizontal="true"
+        android:text="and"
+        android:textSize="20dp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/lcNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/andText"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lc_name"
+        android:textSize="35dp"/>
+
+</RelativeLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">noteTaker</string>
+
+    <string name="vic_name">Victor Tan</string>
+
+    <string name="lc_name">Ling Liang Chung</string>
 </resources>
