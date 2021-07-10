@@ -1,10 +1,13 @@
 package com.example.notetaker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,5 +56,30 @@ public class EditNoteActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_edit_note, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        Intent intent = getIntent();
+        int noteID = intent.getIntExtra("NOTE_ID", 0);
+
+        DBController dbController = new DBController(getApplicationContext());
+        Note note = dbController.getNoteByID(noteID);
+
+        if(id == R.id.archiveNoteButton){
+            dbController.archiveNote(noteID, note.getNoteIsArchived());
+        }else if(id == R.id.deleteNoteButton){
+            dbController.deleteNote(note);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.notetaker.model.Note;
 
@@ -168,6 +169,21 @@ public class DBController extends SQLiteOpenHelper {
         new String[] {String.valueOf(note.getNoteID())}
       );
     }
+
+    public int archiveNote(int noteID, int archiveStatus){
+      SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+      int archiveCode = archiveStatus == 0 ? 1 : 0;
+
+      ContentValues contentValues = new ContentValues();
+      contentValues.put(KEY_ISARCHIVE, archiveCode);
+
+      return sqLiteDatabase.update(
+              TABLE_NAME, contentValues,
+              KEY_ID + "=?",
+              new String[] {String.valueOf((noteID))}
+      );
+  }
 
     public void deleteNote(Note note){
       SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
