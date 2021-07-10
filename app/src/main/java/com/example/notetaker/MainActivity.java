@@ -54,11 +54,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
                 switch (item.getItemId()){
                     case R.id.nav_notes:
-                        //getSupportFragmentManager().beginTransaction().replace()
+                        intent = new Intent(getApplicationContext(), MainActivity.class);
                         break;
+                    case R.id.nav_archive:
+                        intent = new Intent(getApplicationContext(), ArchivedNote.class);
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + item.getItemId());
                 }
+                startActivity(intent);
                 return true;
             }
         });
