@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -76,10 +79,35 @@ public class EditNoteActivity extends AppCompatActivity {
 
         if(id == R.id.archiveNoteButton){
             dbController.archiveNote(noteID, note.getNoteIsArchived());
+            Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
+            intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intentForRedirect);
+            finish();
         }else if(id == R.id.deleteNoteButton){
-            dbController.deleteNote(note);
+            confirmDeleteDialog(note);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void confirmDeleteDialog(Note note) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditNoteActivity.this);
+        builder.setMessage("Are you sure you want to delete?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                DBController dbController = new DBController(getApplicationContext());
+                dbController.deleteNote(note);
+                Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
+                intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentForRedirect);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // do nothing
+            }
+        });
+        builder.show();
     }
 }

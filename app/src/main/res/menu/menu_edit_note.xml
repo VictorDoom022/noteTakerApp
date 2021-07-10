@@ -3,7 +3,7 @@
     <group>
         <item
             android:id="@+id/archiveNoteButton"
-            android:title="Archive" />
+            android:title="Archive/Unarchive" />
         <item
             android:id="@+id/deleteNoteButton"
             android:title="Delete" />
