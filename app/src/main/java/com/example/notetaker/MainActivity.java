@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @SuppressLint("ResourceType")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.layout.menu_option, menu);
+        getMenuInflater().inflate(R.menu.menu_option, menu);
         return true;
     }
 
