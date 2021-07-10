@@ -18,12 +18,12 @@
             android:layout_marginLeft="5dp"/>
 
         <TextView
-            android:id="@+id/noteContentTextView"
+            android:id="@+id/noteDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_below="@+id/noteTitleTextView"
-            android:text="Note Content"/>
+            android:text="Note Add Date"/>
     </RelativeLayout>
 
 </RelativeLayout>
