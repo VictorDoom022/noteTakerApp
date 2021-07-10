@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     case R.id.nav_archive:
                         intent = new Intent(getApplicationContext(), ArchivedNote.class);
                         break;
+                    case R.id.nav_aboutApp:
+                        intent = new Intent(getApplicationContext(), AboutAppActivity.class);
+                        break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
                 }
