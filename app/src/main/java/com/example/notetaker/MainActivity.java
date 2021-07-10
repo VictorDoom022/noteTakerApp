@@ -104,13 +104,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(selectedItem == sortItemChoice[0]){
             noteList = dbController.getAllNote();
         }else if(selectedItem == sortItemChoice[1]){
-            noteList = dbController.getNoteByType(1);
+            noteList = dbController.getNoteByType(1,0);
         }else if(selectedItem == sortItemChoice[2]){
-            noteList = dbController.getNoteByType(2);
+            noteList = dbController.getNoteByType(2,0);
         }else if(selectedItem == sortItemChoice[3]){
-            noteList = dbController.getNoteByType(3);
+            noteList = dbController.getNoteByType(3,0);
         }else if(selectedItem == sortItemChoice[4]){
-            noteList = dbController.getNoteByType(4);
+            noteList = dbController.getNoteByType(4,0);
         }
 
         NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, noteList);

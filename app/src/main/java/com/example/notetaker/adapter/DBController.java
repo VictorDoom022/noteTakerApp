@@ -13,13 +13,14 @@ import java.util.List;
 
 public class DBController extends SQLiteOpenHelper {
   private static final int DATABASE_VERSION = 1;
-  private static final String DATABASE_NAME = "testFive";
+  private static final String DATABASE_NAME = "testSix";
   private static final String TABLE_NAME = "note";
 
   private static final String KEY_ID = "id";
   private static final String KEY_TITLE = "title";
   private static final String KEY_CONTENT = "content";
   private static final String KEY_ADDDATE = "addDate";
+  private static final String KEY_ISARCHIVE = "isArchive";
 
   public DBController(Context context){
       super(context, DATABASE_NAME,null,DATABASE_VERSION);
@@ -33,7 +34,8 @@ public class DBController extends SQLiteOpenHelper {
             KEY_ID + " INTEGER PRIMARY KEY," +
             KEY_TITLE + " TEXT," +
             KEY_CONTENT + " TEXT," +
-            KEY_ADDDATE + " TEXT" +
+            KEY_ADDDATE + " TEXT," +
+            KEY_ISARCHIVE + " INTEGER " +
         ")";
 
     sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
@@ -55,6 +57,7 @@ public class DBController extends SQLiteOpenHelper {
         contentValues.put(KEY_TITLE, note.getNoteTitle());
         contentValues.put(KEY_CONTENT, note.getNoteContent());
         contentValues.put(KEY_ADDDATE, note.getNoteAddDate());
+        contentValues.put(KEY_ISARCHIVE, 0);
 
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         sqLiteDatabase.close();
@@ -66,7 +69,7 @@ public class DBController extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.query(
             TABLE_NAME,
             new String[]{
-                KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_ADDDATE
+                KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_ADDDATE, KEY_ISARCHIVE
             },
             KEY_ID + "=?",
             new String[] {String.valueOf(id)},
@@ -84,7 +87,8 @@ public class DBController extends SQLiteOpenHelper {
             Integer.parseInt(cursor.getString(0)),
             cursor.getString(1),
             cursor.getString(2),
-            cursor.getString(3)
+            cursor.getString(3),
+            cursor.getInt(4)
         );
 
         return note;
@@ -104,7 +108,8 @@ public class DBController extends SQLiteOpenHelper {
                       Integer.parseInt(cursor.getString(0))  ,
                       cursor.getString(1),
                       cursor.getString(2),
-                      cursor.getString(3)
+                      cursor.getString(3),
+                      cursor.getInt(4)
               );
 
               noteList.add(note);
@@ -114,17 +119,20 @@ public class DBController extends SQLiteOpenHelper {
       return noteList;
     }
 
-  public List<Note> getNoteByType(int type){
+  public List<Note> getNoteByType(int type, int isArchive){
     List<Note> noteList = new ArrayList<Note>();
 
     // Type 1 = Title ASC
     // Type 2 = Title DESC
     // Type 3 = Date ASC
     // Type 4 = Date Desc
+    // Type 5 = Unarchived
+    // Type 6 = Archived
     String queryOrderColumn = type==1||type==2 ? KEY_TITLE : KEY_ADDDATE;
     String querySortString = type == 1||type==3 ? " ASC " : " DESC ";
+    int queryArchive = isArchive==0 ? 0 : 1 ;
 
-    String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + queryOrderColumn + querySortString;
+    String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ISARCHIVE + "=" + queryArchive +" ORDER BY " + queryOrderColumn + querySortString;
 
     SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     Cursor cursor = sqLiteDatabase.rawQuery(query,null);
@@ -135,7 +143,8 @@ public class DBController extends SQLiteOpenHelper {
                 Integer.parseInt(cursor.getString(0))  ,
                 cursor.getString(1),
                 cursor.getString(2),
-                cursor.getString(3)
+                cursor.getString(3),
+                cursor.getInt(4)
         );
 
         noteList.add(note);

@@ -5,6 +5,7 @@ public class Note {
     private String noteTitle;
     private String noteContent;
     private String noteAddDate;
+    private int noteIsArchived;
 
     public Note() { };
 
@@ -14,11 +15,20 @@ public class Note {
         this.noteAddDate = noteAddDate;
     }
 
-    public Note(int noteID, String noteTitle, String noteContent, String noteAddDate) {
+    public Note(int noteID, String noteTitle, String noteContent, String noteAddDate, int noteIsArchived) {
         this.noteID = noteID;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
         this.noteAddDate = noteAddDate;
+        this.noteIsArchived = noteIsArchived;
+    }
+
+    public int getNoteIsArchived() {
+        return noteIsArchived;
+    }
+
+    public void setNoteIsArchived(int noteIsArchived) {
+        this.noteIsArchived = noteIsArchived;
     }
 
     public int getNoteID() {
