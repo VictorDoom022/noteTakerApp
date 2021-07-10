@@ -9,8 +9,8 @@ android {
         applicationId "com.example.notetaker"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 1
-        versionName "2.0"
+        versionCode 3
+        versionName "3.0-beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
