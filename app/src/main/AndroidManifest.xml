@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/app_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteTaker">
-        <activity android:name=".AboutAppActivity"></activity>
+        <activity android:name=".ArchivedNote"></activity>
+        <activity android:name=".AboutAppActivity" />
         <activity android:name=".EditNoteActivity" />
         <activity android:name=".AddNoteActivity" />
         <activity android:name=".MainActivity">

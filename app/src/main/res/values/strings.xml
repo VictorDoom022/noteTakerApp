@@ -4,4 +4,8 @@
     <string name="vic_name">Victor Tan</string>
 
     <string name="lc_name">Ling Liang Chung</string>
+
+    <string name="navigation_open_drawer">Open nav drawer</string>
+
+    <string name="navigation_close_drawer">Close nav drawer</string>
 </resources>
