@@ -117,11 +117,14 @@ public class DBController extends SQLiteOpenHelper {
   public List<Note> getNoteByType(int type){
     List<Note> noteList = new ArrayList<Note>();
 
-    // Type 1 = ASC
-    // Type 2 = DESC
-    String querySortString = type == 1 ? " ASC " : " DESC ";
+    // Type 1 = Title ASC
+    // Type 2 = Title DESC
+    // Type 3 = Date ASC
+    // Type 4 = Date Desc
+    String queryOrderColumn = type==1||type==2 ? KEY_TITLE : KEY_ADDDATE;
+    String querySortString = type == 1||type==3 ? " ASC " : " DESC ";
 
-    String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + KEY_TITLE + querySortString;
+    String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + queryOrderColumn + querySortString;
 
     SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     Cursor cursor = sqLiteDatabase.rawQuery(query,null);

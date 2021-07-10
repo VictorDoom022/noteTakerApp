@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     FloatingActionButton addNoteFloatingActionButton;
 
     List<Note> noteList;
-    String[] sortItemChoice = {"Default", "Title Asc", "Title Desc"};
+    String[] sortItemChoice = {"Default", "Title Asc", "Title Desc", "Date Asc", "Date Desc"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             noteList = dbController.getNoteByType(1);
         }else if(selectedItem == sortItemChoice[2]){
             noteList = dbController.getNoteByType(2);
+        }else if(selectedItem == sortItemChoice[3]){
+            noteList = dbController.getNoteByType(3);
+        }else if(selectedItem == sortItemChoice[4]){
+            noteList = dbController.getNoteByType(4);
         }
 
         NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, noteList);
