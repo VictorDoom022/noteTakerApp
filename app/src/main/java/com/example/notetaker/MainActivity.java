@@ -12,11 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner spinnerSortTitle;
     RecyclerView noteListRecyclerView;
     FloatingActionButton addNoteFloatingActionButton;
+    EditText searchEditText;
 
     List<Note> noteList;
     String[] sortItemChoice = {"Default", "Title Asc", "Title Desc", "Date Asc", "Date Desc"};
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerSortTitle = findViewById(R.id.sortTitleSpinner);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigationView);
+        searchEditText = findViewById(R.id.searchEditText);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -84,6 +90,35 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerSortTitle.setAdapter(arrayAdapter);
 
+        noteListRecyclerView = findViewById(R.id.noteListRecyclerView);
+        noteListRecyclerView.setHasFixedSize(true);
+        noteListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        DBController dbController = new DBController(getApplicationContext());
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                noteList = dbController.getNoteByType(0,0);
+
+                NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, noteList);
+                noteListRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(searchEditText.getText().toString().length() != 0){
+                    noteList = dbController.searchNote(searchEditText.getText().toString());
+                    displayData(noteList);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         addNoteFloatingActionButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -95,16 +130,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         );
     }
 
+    public void displayData(List<Note> notes){
+        NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, notes);
+        noteListRecyclerView.setAdapter(adapter);
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-        DBController dbController = new DBController(getApplicationContext());
-
-        noteListRecyclerView = findViewById(R.id.noteListRecyclerView);
-        noteListRecyclerView.setHasFixedSize(true);
-        noteListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         String selectedItem = adapterView.getItemAtPosition(i).toString();
+        DBController dbController = new DBController(getApplicationContext());
 
         if(selectedItem == sortItemChoice[0]){
             noteList = dbController.getNoteByType(0,0);
@@ -117,9 +152,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }else  if(selectedItem == sortItemChoice[4]){
             noteList = dbController.getNoteByType(4,0);
         }
+        displayData(noteList);
 
-        NoteListAdapter adapter = new NoteListAdapter(MainActivity.this, noteList);
-        noteListRecyclerView.setAdapter(adapter);
     }
 
     @Override

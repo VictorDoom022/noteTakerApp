@@ -162,6 +162,32 @@ public class DBController extends SQLiteOpenHelper {
     return noteList;
   }
 
+  public List<Note> searchNote(String searchTerm){
+    List<Note> noteList = new ArrayList<Note>();
+
+    String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_TITLE + " LIKE " + "'%" + searchTerm + "%'";
+
+    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+    if (cursor.moveToFirst()){
+      do {
+        Note note = new Note(
+                Integer.parseInt(cursor.getString(0))  ,
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getInt(4),
+                cursor.getInt(5)
+        );
+
+        noteList.add(note);
+      }while (cursor.moveToNext());
+    }
+
+    return noteList;
+  }
+
     public int updateNote(Note note){
       SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
