@@ -43,10 +43,14 @@
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@+id/sortTitleLayout"
-
+            android:background="@drawable/edit_text_border_shape"
+            android:hint="Search notes..."
+            android:layout_margin="8dp"
+            android:padding="5dp"
         />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/noteListRecyclerView"
             android:layout_below="@+id/searchEditText"
