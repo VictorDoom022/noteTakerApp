@@ -17,6 +17,15 @@
             android:textSize="25dp"
             android:layout_marginLeft="5dp"/>
 
+        <ImageView
+            android:id="@+id/pin_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_above="@+id/noteDateTextView"
+            android:layout_toRightOf="@+id/noteTitleTextView"
+            android:src="@mipmap/pin_logo_round" />
+
         <TextView
             android:id="@+id/noteDateTextView"
             android:layout_width="wrap_content"

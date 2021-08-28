@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,10 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         holder.noteTitleTextView.setText(note.getNoteTitle());
         holder.noteDateTextView.setText(note.getNoteAddDate());
 
+        if(note.getNoteIsPinned() == 0){
+            holder.notePinImageView.setVisibility(View.GONE);
+        }
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -70,12 +75,14 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
     class NoteViewHolder extends RecyclerView.ViewHolder{
 
         TextView noteTitleTextView, noteDateTextView;
+        ImageView notePinImageView;
 
         public NoteViewHolder(View itemView){
             super(itemView);
 
             noteTitleTextView = itemView.findViewById(R.id.noteTitleTextView);
             noteDateTextView = itemView.findViewById(R.id.noteDateTextView);
+            notePinImageView = itemView.findViewById(R.id.pin_logo);
         }
     }
 
