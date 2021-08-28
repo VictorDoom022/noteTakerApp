@@ -128,13 +128,14 @@ public class DBController extends SQLiteOpenHelper {
   public List<Note> getNoteByType(int type, int isArchive){
     List<Note> noteList = new ArrayList<Note>();
 
+    // Type 0 = Default (Pinned)
     // Type 1 = Title ASC
     // Type 2 = Title DESC
     // Type 3 = Date ASC
     // Type 4 = Date Desc
     // Type 5 = Unarchived
     // Type 6 = Archived
-    String queryOrderColumn = type==1||type==2 ? KEY_TITLE : KEY_ADDDATE;
+    String queryOrderColumn = type==1||type==2 ? KEY_TITLE : type==0 ? KEY_ISPIN :KEY_ADDDATE;
     String querySortString = type == 1||type==3 ? " ASC " : " DESC ";
     int queryArchive = isArchive==0 ? 0 : 1 ;
 
