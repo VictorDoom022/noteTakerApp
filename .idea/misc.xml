@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/layout/activity_about_app.xml" value="0.12132725430597771" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/menu/menu_drawer.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/menu/menu_edit_note.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/menu/menu_option.xml" value="0.12708333333333333" />
       </map>
     </option>
   </component>

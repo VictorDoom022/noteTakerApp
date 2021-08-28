@@ -85,6 +85,12 @@ public class EditNoteActivity extends AppCompatActivity {
             finish();
         }else if(id == R.id.deleteNoteButton){
             confirmDeleteDialog(note);
+        }else if(id == R.id.pinNoteButton){
+            dbController.pinNote(noteID, note.getNoteIsPinned());
+            Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
+            intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intentForRedirect);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

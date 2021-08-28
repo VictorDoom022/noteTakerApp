@@ -4,6 +4,11 @@
         <item
             android:id="@+id/archiveNoteButton"
             android:title="Archive/Unarchive" />
+
+        <item
+            android:id="@+id/pinNoteButton"
+            android:title="Pin/Unpin" />
+
         <item
             android:id="@+id/deleteNoteButton"
             android:title="Delete" />

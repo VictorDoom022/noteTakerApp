@@ -191,6 +191,21 @@ public class DBController extends SQLiteOpenHelper {
       );
   }
 
+  public int pinNote(int noteID, int pinStatus){
+    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+    int archiveCode = pinStatus == 0 ? 1 : 0;
+
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(KEY_ISPIN, archiveCode);
+
+    return sqLiteDatabase.update(
+            TABLE_NAME, contentValues,
+            KEY_ID + "=?",
+            new String[] {String.valueOf((noteID))}
+    );
+  }
+
     public void deleteNote(Note note){
       SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
       sqLiteDatabase.delete(
