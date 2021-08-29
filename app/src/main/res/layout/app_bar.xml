@@ -5,9 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/appBar"
-    android:background="@color/purple_500"
+    android:background="@color/purple_700"
+    android:minHeight="100dp"
+    app:contentInsetStart="150dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/Theme.NoteTaker">
+    app:popupTheme="@style/Theme.NoteTaker"
+    >
 
 
 </androidx.appcompat.widget.Toolbar>

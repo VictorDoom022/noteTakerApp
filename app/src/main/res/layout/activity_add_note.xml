@@ -11,45 +11,35 @@
         layout="@layout/app_bar"
         android:id="@+id/appBar"/>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/titleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/appBar"
-        android:text="Title :"
-        android:textSize="40sp"
-        android:layout_marginHorizontal="5dp"/>
-
-    <EditText
-        android:id="@+id/titleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titleText"
-        android:hint="Note title"
-        android:height="40dp"
-        android:background="@null"
-        android:lines="1"
-        android:layout_marginHorizontal="5dp"/>
+        android:hint="Note Title">
 
-    <TextView
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/contentText"
+        android:layout_below="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titleEditText"
-        android:text="Note Content"
-        android:textSize="40sp"
-        android:layout_marginHorizontal="5dp"/>
+        android:hint="Note Content">
 
-    <EditText
-        android:id="@+id/contentEditText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/contentText"
-        android:hint="Type your note content here!"
-        android:inputType="textMultiLine"
-        android:gravity="top"
-        android:background="@null"
-        android:layout_marginHorizontal="5dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/contentEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/addNoteButton"
@@ -57,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:text="Add note"
-        android:layout_marginHorizontal="5dp"/>
+        android:layout_marginHorizontal="5dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="Add note" />
 </RelativeLayout>

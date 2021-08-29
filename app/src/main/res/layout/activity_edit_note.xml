@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,48 +8,78 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/app_bar"
-        android:id="@+id/appBar"/>
+        android:id="@+id/appBar"
+        layout="@layout/app_bar" />
 
-    <TextView
+<!--    <TextView-->
+<!--        android:id="@+id/editNoteTitleText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/appBar"-->
+<!--        android:text="Title :"-->
+<!--        android:textSize="40sp"-->
+<!--        android:layout_marginHorizontal="5dp"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editNoteTitleEditText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/editNoteTitleText"-->
+<!--        android:height="40dp"-->
+<!--        android:hint="Note title"-->
+<!--        android:background="@null"-->
+<!--        android:lines="1"-->
+<!--        android:layout_marginHorizontal="5dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/editNoteContentText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/editNoteTitleEditText"-->
+<!--        android:text="Note Content"-->
+<!--        android:textSize="40sp"-->
+<!--        android:layout_marginHorizontal="5dp"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editNoteContentEditText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@+id/editNoteContentText"-->
+<!--        android:hint="Type your note content here!"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:gravity="top"-->
+<!--        android:background="@null"-->
+<!--        android:layout_marginHorizontal="5dp"/>-->
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editNoteTitleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/appBar"
-        android:text="Title :"
-        android:textSize="40sp"
-        android:layout_marginHorizontal="5dp"/>
-
-    <EditText
-        android:id="@+id/editNoteTitleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editNoteTitleText"
-        android:height="40dp"
-        android:hint="Note title"
-        android:background="@null"
-        android:lines="1"
-        android:layout_marginHorizontal="5dp"/>
+        android:hint="@string/note_title">
 
-    <TextView
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNoteTitleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editNoteContentText"
+        android:layout_below="@+id/editNoteTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editNoteTitleEditText"
-        android:text="Note Content"
-        android:textSize="40sp"
-        android:layout_marginHorizontal="5dp"/>
+        android:hint="@string/note_content">
 
-    <EditText
-        android:id="@+id/editNoteContentEditText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/editNoteContentText"
-        android:hint="Type your note content here!"
-        android:inputType="textMultiLine"
-        android:gravity="top"
-        android:background="@null"
-        android:layout_marginHorizontal="5dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNoteContentEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/editNoteButton"
@@ -58,6 +87,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:text="Edit note"
+        android:text="@string/edit_note"
         android:layout_marginHorizontal="5dp"/>
 </RelativeLayout>

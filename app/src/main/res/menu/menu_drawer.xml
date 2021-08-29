@@ -20,6 +20,7 @@
                 android:id="@+id/nav_aboutApp"
                 android:icon="@drawable/ic_baseline_info_24"
                 android:title="About App" />
+
         </menu>
     </item>
 </menu>

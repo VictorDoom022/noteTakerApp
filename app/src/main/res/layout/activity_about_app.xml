@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/versionNumberText"
             android:layout_centerHorizontal="true"
-            android:text="by"
+            android:text="Developed by"
             android:textSize="20dp"
             android:textStyle="italic"/>
 

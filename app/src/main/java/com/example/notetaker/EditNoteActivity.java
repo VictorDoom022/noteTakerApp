@@ -18,11 +18,12 @@ import android.widget.Toast;
 
 import com.example.notetaker.adapter.DBController;
 import com.example.notetaker.model.Note;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class EditNoteActivity extends AppCompatActivity {
 
     Button editNoteButton;
-    EditText editTitleEditText, editContentEditText;
+    TextInputEditText editTitleEditText, editContentEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

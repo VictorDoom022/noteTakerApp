@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Note Taker</string>
+    <string name="app_name">Knock Note</string>
 
     <string name="vic_name">Victor Tan</string>
 
@@ -8,4 +8,8 @@
     <string name="navigation_open_drawer">Open nav drawer</string>
 
     <string name="navigation_close_drawer">Close nav drawer</string>
+    <string name="note_title">Note Title</string>
+    <string name="note_content">Note Content</string>
+    <string name="edit_note">Edit note</string>
+    <string name="note_add_date">Note Add Date</string>
 </resources>
