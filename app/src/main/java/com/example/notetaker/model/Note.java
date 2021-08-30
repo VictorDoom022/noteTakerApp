@@ -7,6 +7,7 @@ public class Note {
     private String noteAddDate;
     private int noteIsArchived;
     private int noteIsPinned;
+    private String noteColor;
 
     public Note() { };
 
@@ -16,13 +17,22 @@ public class Note {
         this.noteAddDate = noteAddDate;
     }
 
-    public Note(int noteID, String noteTitle, String noteContent, String noteAddDate, int noteIsArchived, int noteIsPinned) {
+    public Note(int noteID, String noteTitle, String noteContent, String noteAddDate, int noteIsArchived, int noteIsPinned, String noteColor) {
         this.noteID = noteID;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
         this.noteAddDate = noteAddDate;
         this.noteIsArchived = noteIsArchived;
         this.noteIsPinned = noteIsPinned;
+        this.noteColor = noteColor;
+    }
+
+    public String getNoteColor() {
+        return noteColor;
+    }
+
+    public void setNoteColor(String noteColor) {
+        this.noteColor = noteColor;
     }
 
     public int getNoteIsArchived() {

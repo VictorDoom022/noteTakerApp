@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DBController extends SQLiteOpenHelper {
   private static final int DATABASE_VERSION = 1;
-  private static final String DATABASE_NAME = "testSeven";
+  private static final String DATABASE_NAME = "testEight";
   private static final String TABLE_NAME = "note";
 
   private static final String KEY_ID = "id";
@@ -23,6 +23,7 @@ public class DBController extends SQLiteOpenHelper {
   private static final String KEY_ADDDATE = "addDate";
   private static final String KEY_ISARCHIVE = "isArchive";
   private static final String KEY_ISPIN = "isPin";
+  private static final String KEY_COLOR = "color";
 
   public DBController(Context context){
       super(context, DATABASE_NAME,null,DATABASE_VERSION);
@@ -38,7 +39,8 @@ public class DBController extends SQLiteOpenHelper {
             KEY_CONTENT + " TEXT," +
             KEY_ADDDATE + " TEXT," +
             KEY_ISARCHIVE + " INTEGER, " +
-            KEY_ISPIN + " INTEGER " +
+            KEY_ISPIN + " INTEGER, " +
+            KEY_COLOR + " TEXT " +
         ")";
 
     sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
@@ -62,6 +64,7 @@ public class DBController extends SQLiteOpenHelper {
         contentValues.put(KEY_ADDDATE, note.getNoteAddDate());
         contentValues.put(KEY_ISARCHIVE, 0);
         contentValues.put(KEY_ISPIN, 0);
+        contentValues.put(KEY_COLOR, "Default");
 
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         sqLiteDatabase.close();
@@ -73,7 +76,7 @@ public class DBController extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.query(
             TABLE_NAME,
             new String[]{
-                KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_ADDDATE, KEY_ISARCHIVE, KEY_ISPIN
+                KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_ADDDATE, KEY_ISARCHIVE, KEY_ISPIN, KEY_COLOR
             },
             KEY_ID + "=?",
             new String[] {String.valueOf(id)},
@@ -93,7 +96,8 @@ public class DBController extends SQLiteOpenHelper {
             cursor.getString(2),
             cursor.getString(3),
             cursor.getInt(4),
-            cursor.getInt(5)
+            cursor.getInt(5),
+            cursor.getString(6)
         );
 
         return note;
@@ -115,7 +119,8 @@ public class DBController extends SQLiteOpenHelper {
                       cursor.getString(2),
                       cursor.getString(3),
                       cursor.getInt(4),
-                      cursor.getInt(5)
+                      cursor.getInt(5),
+                      cursor.getString(6)
               );
 
               noteList.add(note);
@@ -152,7 +157,8 @@ public class DBController extends SQLiteOpenHelper {
                 cursor.getString(2),
                 cursor.getString(3),
                 cursor.getInt(4),
-                cursor.getInt(5)
+                cursor.getInt(5),
+                cursor.getString(6)
         );
 
         noteList.add(note);
@@ -178,7 +184,8 @@ public class DBController extends SQLiteOpenHelper {
                 cursor.getString(2),
                 cursor.getString(3),
                 cursor.getInt(4),
-                cursor.getInt(5)
+                cursor.getInt(5),
+                cursor.getString(6)
         );
 
         noteList.add(note);
