@@ -10,6 +10,10 @@
             android:title="Pin/Unpin" />
 
         <item
+            android:id="@+id/changeColorDialogButton"
+            android:title="Change Color" />
+
+        <item
             android:id="@+id/deleteNoteButton"
             android:title="Delete" />
     </group>

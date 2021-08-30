@@ -225,6 +225,19 @@ public class DBController extends SQLiteOpenHelper {
       );
   }
 
+  public int changeNoteColor(int noteID, String colorToSet){
+    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(KEY_COLOR, colorToSet);
+
+    return sqLiteDatabase.update(
+            TABLE_NAME, contentValues,
+            KEY_ID + "=?",
+            new String[] {String.valueOf((noteID))}
+    );
+  }
+
   public int pinNote(int noteID, int pinStatus){
     SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 

@@ -92,9 +92,27 @@ public class EditNoteActivity extends AppCompatActivity {
             intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intentForRedirect);
             finish();
+        }else if(id == R.id.changeColorDialogButton){
+            selectColorDialog(noteID);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void selectColorDialog(int noteID){
+        String[] colors = {"Default", "Blue", "Green", "Red"};
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Pick a color");
+        alertDialogBuilder.setItems(colors, new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DBController dbController = new DBController(getApplicationContext());
+                dbController.changeNoteColor(noteID, colors[i]);
+                Toast.makeText(getApplicationContext(), colors[i], Toast.LENGTH_SHORT).show();
+            }
+        });
+        alertDialogBuilder.show();
     }
 
     public void confirmDeleteDialog(Note note) {
