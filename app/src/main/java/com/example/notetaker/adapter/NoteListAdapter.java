@@ -43,8 +43,6 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
     @Override
     public void onBindViewHolder(@NonNull NoteListAdapter.NoteViewHolder holder, int position) {
 
-        String colorString = "#1ff4ff";
-
         Note note = noteList.get(position);
 
         holder.noteTitleTextView.setText(note.getNoteTitle());

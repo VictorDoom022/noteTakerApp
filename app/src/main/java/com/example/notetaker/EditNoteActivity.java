@@ -54,10 +54,7 @@ public class EditNoteActivity extends AppCompatActivity {
                 dbController.updateNote(
                         new Note(note.getNoteID(), editTitleEditText.getText().toString(), editContentEditText.getText().toString(),note.getNoteAddDate(), note.getNoteIsArchived(), note.getNoteIsPinned(), note.getNoteColor())
                 );
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
+                navigateBackToMainActivity();
             }
         });
     }
@@ -80,18 +77,12 @@ public class EditNoteActivity extends AppCompatActivity {
 
         if(id == R.id.archiveNoteButton){
             dbController.archiveNote(noteID, note.getNoteIsArchived());
-            Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
-            intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intentForRedirect);
-            finish();
+            navigateBackToMainActivity();
         }else if(id == R.id.deleteNoteButton){
             confirmDeleteDialog(note);
         }else if(id == R.id.pinNoteButton){
             dbController.pinNote(noteID, note.getNoteIsPinned());
-            Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
-            intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intentForRedirect);
-            finish();
+            navigateBackToMainActivity();
         }else if(id == R.id.changeColorDialogButton){
             selectColorDialog(noteID);
         }
@@ -110,10 +101,7 @@ public class EditNoteActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 DBController dbController = new DBController(getApplicationContext());
                 dbController.changeNoteColor(noteID, colorHex[i]);
-                Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
-                intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intentForRedirect);
-                finish();
+                navigateBackToMainActivity();
             }
         });
         alertDialogBuilder.show();
@@ -126,10 +114,7 @@ public class EditNoteActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 DBController dbController = new DBController(getApplicationContext());
                 dbController.deleteNote(note);
-                Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
-                intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intentForRedirect);
-                finish();
+                navigateBackToMainActivity();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -138,5 +123,12 @@ public class EditNoteActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public void navigateBackToMainActivity(){
+        Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
+        intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intentForRedirect);
+        finish();
     }
 }

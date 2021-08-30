@@ -171,7 +171,7 @@ public class DBController extends SQLiteOpenHelper {
   public List<Note> searchNote(String searchTerm){
     List<Note> noteList = new ArrayList<Note>();
 
-    String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_TITLE + " LIKE " + "'%" + searchTerm + "%'";
+    String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_TITLE + " LIKE " + "'%" + searchTerm + "%' AND " + KEY_ISARCHIVE + "= 0";
 
     SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     Cursor cursor = sqLiteDatabase.rawQuery(query,null);

@@ -11,46 +11,6 @@
         android:id="@+id/appBar"
         layout="@layout/app_bar" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/editNoteTitleText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/appBar"-->
-<!--        android:text="Title :"-->
-<!--        android:textSize="40sp"-->
-<!--        android:layout_marginHorizontal="5dp"/>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/editNoteTitleEditText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/editNoteTitleText"-->
-<!--        android:height="40dp"-->
-<!--        android:hint="Note title"-->
-<!--        android:background="@null"-->
-<!--        android:lines="1"-->
-<!--        android:layout_marginHorizontal="5dp"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/editNoteContentText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/editNoteTitleEditText"-->
-<!--        android:text="Note Content"-->
-<!--        android:textSize="40sp"-->
-<!--        android:layout_marginHorizontal="5dp"/>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/editNoteContentEditText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_below="@+id/editNoteContentText"-->
-<!--        android:hint="Type your note content here!"-->
-<!--        android:inputType="textMultiLine"-->
-<!--        android:gravity="top"-->
-<!--        android:background="@null"-->
-<!--        android:layout_marginHorizontal="5dp"/>-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editNoteTitleText"
         android:layout_below="@+id/appBar"
