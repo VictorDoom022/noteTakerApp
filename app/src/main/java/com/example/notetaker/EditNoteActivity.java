@@ -101,6 +101,7 @@ public class EditNoteActivity extends AppCompatActivity {
 
     public void selectColorDialog(int noteID){
         String[] colors = {"Default", "Blue", "Green", "Red"};
+        String[] colorHex = {"#e8dff0", "#1ff4ff", "#52ff94", "#ff895e"};
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Pick a color");
@@ -108,8 +109,11 @@ public class EditNoteActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 DBController dbController = new DBController(getApplicationContext());
-                dbController.changeNoteColor(noteID, colors[i]);
-                Toast.makeText(getApplicationContext(), colors[i], Toast.LENGTH_SHORT).show();
+                dbController.changeNoteColor(noteID, colorHex[i]);
+                Intent intentForRedirect = new Intent(getApplicationContext(), MainActivity.class);
+                intentForRedirect.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intentForRedirect);
+                finish();
             }
         });
         alertDialogBuilder.show();

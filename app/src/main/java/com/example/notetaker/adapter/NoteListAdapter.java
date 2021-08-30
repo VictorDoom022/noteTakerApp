@@ -5,10 +5,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,9 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
 
     @Override
     public void onBindViewHolder(@NonNull NoteListAdapter.NoteViewHolder holder, int position) {
+
+        String colorString = "#1ff4ff";
+
         Note note = noteList.get(position);
 
         holder.noteTitleTextView.setText(note.getNoteTitle());
@@ -48,6 +53,8 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         if(note.getNoteIsPinned() == 0){
             holder.notePinImageView.setVisibility(View.GONE);
         }
+
+        holder.relativeLayoutItem.setBackgroundColor(Color.parseColor(note.getNoteColor()));
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -74,6 +81,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
 
     class NoteViewHolder extends RecyclerView.ViewHolder{
 
+        RelativeLayout relativeLayoutItem;
         TextView noteTitleTextView, noteDateTextView;
         ImageView notePinImageView;
 
@@ -83,6 +91,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
             noteTitleTextView = itemView.findViewById(R.id.noteTitleTextView);
             noteDateTextView = itemView.findViewById(R.id.noteDateTextView);
             notePinImageView = itemView.findViewById(R.id.pin_logo);
+            relativeLayoutItem = itemView.findViewById(R.id.relativeLayoutItem);
         }
     }
 

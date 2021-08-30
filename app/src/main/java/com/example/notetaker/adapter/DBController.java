@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DBController extends SQLiteOpenHelper {
   private static final int DATABASE_VERSION = 1;
-  private static final String DATABASE_NAME = "testEight";
+  private static final String DATABASE_NAME = "testNine";
   private static final String TABLE_NAME = "note";
 
   private static final String KEY_ID = "id";
@@ -64,7 +64,7 @@ public class DBController extends SQLiteOpenHelper {
         contentValues.put(KEY_ADDDATE, note.getNoteAddDate());
         contentValues.put(KEY_ISARCHIVE, 0);
         contentValues.put(KEY_ISPIN, 0);
-        contentValues.put(KEY_COLOR, "Default");
+        contentValues.put(KEY_COLOR, "#e8dff0");
 
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         sqLiteDatabase.close();

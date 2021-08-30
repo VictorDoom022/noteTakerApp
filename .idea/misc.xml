@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/drawable-v24/edit_text_border_shape.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/drawable/layout_bg.xml" value="0.1359375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/layout/activity_about_app.xml" value="0.12132725430597771" />
         <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/layout/activity_add_note.xml" value="0.10572916666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/noteTaker/app/src/main/res/layout/activity_archived_note.xml" value="0.10572916666666667" />
