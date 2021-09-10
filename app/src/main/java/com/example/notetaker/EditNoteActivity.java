@@ -91,8 +91,8 @@ public class EditNoteActivity extends AppCompatActivity {
     }
 
     public void selectColorDialog(int noteID){
-        String[] colors = {"Default", "Blue", "Green", "Red"};
-        String[] colorHex = {"#e8dff0", "#1ff4ff", "#52ff94", "#ff895e"};
+        String[] colors = {"Default", "Blue", "Green", "Red", "Yellow"};
+        String[] colorHex = {"#e8dff0", "#1ff4ff", "#52ff94", "#ff895e", "#ffeb0f"};
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Pick a color");
